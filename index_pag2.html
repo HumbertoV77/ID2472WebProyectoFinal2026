@@ -1,0 +1,461 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galería Halo | Universo Spartan</title>
+
+    <style>
+        /* CONFIGURACIÓN GENERAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #101510;
+            color: #ffffff;
+        }
+
+        /* ENCABEZADO */
+        header {
+            background-color: #18231b;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #82b83f;
+        }
+
+        .logo {
+            color: #9ccc52;
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+        }
+
+        #inicio {
+            background-color: #8fbd45;
+            color: #101510;
+            padding: 12px 22px;
+            border: 2px solid #8fbd45;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #inicio:hover {
+            background-color: transparent;
+            color: #a9df5e;
+            transform: scale(1.05);
+        }
+
+        /* BANNER PRINCIPAL */
+        .banner {
+            min-height: 360px;
+            padding: 80px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:
+                linear-gradient(
+                    rgba(5, 12, 7, 0.72),
+                    rgba(5, 12, 7, 0.88)
+                ),
+                url("Fotos/foto1.jpg") center/cover no-repeat;
+            border-bottom: 3px solid #82b83f;
+        }
+
+        .banner h1 {
+            font-size: clamp(35px, 6vw, 60px);
+            color: #a6d75b;
+            text-shadow: 0 0 18px #4d7629;
+            margin-bottom: 18px;
+        }
+
+        .banner p {
+            max-width: 650px;
+            line-height: 1.7;
+            font-size: 17px;
+            color: #e0e7dc;
+        }
+
+        /* CONTENEDOR DE LA GALERÍA */
+        .contenedor {
+            width: 90%;
+            max-width: 1250px;
+            margin: 55px auto;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titulo-seccion h2 {
+            color: #a6d75b;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .titulo-seccion p {
+            color: #b9c3b6;
+            line-height: 1.6;
+        }
+
+        /* CUADRÍCULA DE TARJETAS */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        /* TARJETAS */
+        .tarjeta {
+            background-color: #1c261e;
+            border: 1px solid #394a36;
+            border-radius: 12px;
+            overflow: hidden;
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            border-color: #a6d75b;
+            box-shadow: 0 12px 28px rgba(130, 184, 63, 0.25);
+        }
+
+        /* IMÁGENES */
+        .tarjeta img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tarjeta:hover img {
+            transform: scale(1.08);
+        }
+
+        .imagen {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contenido {
+            padding: 22px;
+        }
+
+        .contenido h3 {
+            color: #a6d75b;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .contenido p {
+            color: #d0d8ce;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .etiqueta {
+            display: inline-block;
+            background-color: #30432a;
+            color: #c2ed8b;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 14px;
+        }
+
+        /* BOTÓN DE TARJETA */
+        .boton-ver {
+            display: inline-block;
+            padding: 10px 16px;
+            background-color: #8fbd45;
+            color: #11180e;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .boton-ver:hover {
+            background-color: #b1e66a;
+            transform: scale(1.04);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            text-align: center;
+            padding: 28px 15px;
+            margin-top: 60px;
+            background-color: #18231b;
+            border-top: 2px solid #82b83f;
+            color: #c3cdbf;
+            line-height: 1.8;
+        }
+
+        footer strong {
+            color: #a6d75b;
+        }
+
+        /* TABLET */
+        @media (max-width: 900px) {
+            .galeria {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* CELULAR */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .banner {
+                min-height: 300px;
+                padding: 55px 20px;
+            }
+
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+
+            .tarjeta img {
+                height: 240px;
+            }
+
+            .contenedor {
+                width: 92%;
+                margin: 35px auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <div class="logo">HALO UNIVERSE</div>
+
+        <nav>
+            <a href="index.html">
+                <button id="inicio" type="button">
+                    &#8592; REGRESAR AL INICIO
+                </button>
+            </a>
+        </nav>
+    </header>
+
+    <!-- BANNER -->
+    <section class="banner">
+        <h1>GALERÍA HALO</h1>
+
+        <p>
+            Explora el universo de Halo, conoce a los guerreros
+            Spartan, descubre las armaduras legendarias y revive
+            las batallas que marcaron la historia de la humanidad.
+        </p>
+    </section>
+
+    <!-- GALERÍA DE IMÁGENES -->
+    <main class="contenedor">
+
+        <div class="titulo-seccion">
+            <h2>Explora el universo</h2>
+            <p>
+                Una colección dedicada a los personajes,
+                armaduras, vehículos y escenarios de Halo.
+            </p>
+        </div>
+
+        <section class="galeria">
+
+            <!-- TARJETA 1 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/Armadura1.jpg"
+                        alt="Armadura del Jefe Maestro"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">SPARTAN</span>
+                    <h3>Jefe Maestro</h3>
+                    <p>
+                        John-117 es uno de los supersoldados
+                        más reconocidos del universo Halo.
+                        Su armadura MJOLNIR es un símbolo de la UNSC.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/Armadura1.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 2 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/Armadura2.jpg"
+                        alt="Armadura Spartan Azteca"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">ARMADURAS</span>
+                    <h3>Spartan Azteca</h3>
+                    <p>
+                        Una apariencia inspirada en motivos
+                        mesoamericanos para darle un estilo
+                        especial a tu colección de Spartans.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/Armadura2.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 3 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/Armadura3.jpg"
+                        alt="Armadura del Equipo Noble"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">EQUIPO NOBLE</span>
+                    <h3>Spartan Noble</h3>
+                    <p>
+                        Recuerda al Equipo Noble y sus misiones
+                        durante los acontecimientos de Halo: Reach.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/Armadura3.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 4 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/foto04.jpg"
+                        alt="Escena del universo Halo"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">UNIVERSO HALO</span>
+                    <h3>Campos de batalla</h3>
+                    <p>
+                        Explora los escenarios donde los Spartans
+                        enfrentan peligros y libran grandes batallas.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/foto04.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 5 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/foto1.jpg"
+                        alt="Imagen principal de Halo"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">CIENCIA FICCIÓN</span>
+                    <h3>El universo Spartan</h3>
+                    <p>
+                        Descubre la tecnología, las armas y
+                        las historias que forman parte de esta
+                        saga de ciencia ficción.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/foto1.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+            <!-- TARJETA 6 -->
+            <article class="tarjeta">
+                <div class="imagen">
+                    <img
+                        src="Fotos/Armadura1.jpg"
+                        alt="Equipo de combate Spartan"
+                        loading="lazy">
+                </div>
+
+                <div class="contenido">
+                    <span class="etiqueta">COMBATE</span>
+                    <h3>Legado Spartan</h3>
+                    <p>
+                        Los Spartans representan la resistencia,
+                        la estrategia y la lucha por proteger
+                        a la humanidad.
+                    </p>
+                    <a class="boton-ver"
+                       href="Fotos/Armadura1.jpg"
+                       target="_blank"
+                       rel="noopener">
+                        Ver imagen
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <p><strong>HALO UNIVERSE</strong></p>
+        <p>Proyecto web de Humberto Vargas Parada</p>
+        <p>ID24072 | Galería de videojuegos</p>
+    </footer>
+
+</body>
+</html>

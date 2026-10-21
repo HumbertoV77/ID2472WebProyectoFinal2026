@@ -1,0 +1,79 @@
+#encabezado button
+{
+	padding: 10px 20px; 
+	font-size_ 16pt;
+	color: black;
+	font-family: calibri;
+	border: 1px solid white;
+	cursor: pointer;
+	background-color: white;
+	transition: .3s;
+
+}
+
+#encabezado button:hover
+{
+	border: 1px solid red;
+	color: red;
+}
+
+#banner {
+    width: 70%;
+    height: 100%;
+}
+
+/* Color de fondo de la página */
+body {
+    background-color: #786967;
+    color: white;
+    margin: 0;
+}
+
+#cuerpo table
+{
+	width: 80%;
+	padding: 20px;
+}
+
+#cuerpo table th
+{
+	width: 32%;	
+}
+
+#cuerpo table th img
+{
+	width: 50%;	
+}
+
+#cuerpo table th h1
+{
+	color: yellow;
+	font-family: calibri;
+	font-size: 15pt;
+}
+
+#cuerpo table th p
+{
+	color: black;
+	font-family: calibri;
+	font-size: 12pt;
+}
+
+#tabla3 table td h1
+{
+	color: orange;
+	font-family: calibri;
+	font-size: 14pt;
+}
+
+#table3 table td p
+{
+font-family: calibri;
+}
+
+#cuerpo img
+{
+	width: 200px;
+	height: 300px;
+	object-fit: contain;
+}
